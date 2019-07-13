@@ -55,7 +55,13 @@
           <td> <input type="text"> </th>
           <td> <input type="text"> </th>
           <td> <input type="text"> </th>
+        </tr> <tr>
+          <td id="time_6"> 时间六 </th>
+          <td> <input type="text"> </th>
+          <td> <input type="text"> </th>
+          <td> <input type="text"> </th>
         </tr>
+
       </tbody>
     </table>
 
@@ -247,6 +253,40 @@
           }
         }
         document.getElementById("time_5").innerHTML = time_5;
+      }
+
+    if (Number(minute) + Number(times) >= 60) {
+        if (Number(minute) < 9) {
+          if ((Number(minute) + Number(times) - 60) < 9) {
+            var time_1 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
+          } else {
+            var time_1 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
+          }
+        } else {
+          if ((Number(minute) + Number(times) - 60) < 9) {
+            var time_1 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
+          } else {
+            var time_1 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
+          }
+        }
+        document.getElementById("time_6").innerHTML = time_6;
+        hour = Number(hour+1);
+        minute = Number(minute-60);
+      } else {
+        if (Number(minute) < 9) {
+          if ((Number(minute) + Number(times)) < 9) {
+            var time_6 = hour + ":" + 0 + minute + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times));
+          } else {
+            var time_6 = hour + ":" + 0 + minute + " ~ " + hour + ":" + (Number(minute) + Number(times));
+          }
+        } else {
+          if ((Number(minute) + Number(times)) < 9) {
+            var time_6 = hour + ":" + minute + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times));
+          } else {
+            var time_6 = hour + ":" + minute + " ~ " + hour + ":" + (Number(minute) + Number(times));
+          }
+        }
+        document.getElementById("time_6").innerHTML = time_6;
       }
 
     }
