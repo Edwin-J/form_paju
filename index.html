@@ -255,35 +255,35 @@
         document.getElementById("time_5").innerHTML = time_5;
       }
 
-    if (Number(minute) + Number(times) >= 60) {
-        if (Number(minute) < 9) {
-          if ((Number(minute) + Number(times) - 60) < 9) {
-            var time_6 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
+    if (Number(minute) + Number(times * 6) >= 60) {
+        if ((Number(minute) + Number(times * 5)) < 9) {
+          if ((Number(minute) + Number(times * 6) - 60) < 9) {
+            var time_6 = hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 6) - 60);
           } else {
-            var time_6 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
+            var time_6 = hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 6) - 60);
           }
         } else {
-          if ((Number(minute) + Number(times) - 60) < 9) {
-            var time_6 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
+          if ((Number(minute) + Number(times * 6) - 60) < 9) {
+            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 6) - 60);
           } else {
-            var time_6 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
+            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 6) - 60);
           }
         }
         document.getElementById("time_6").innerHTML = time_6;
         hour = Number(hour+1);
         minute = Number(minute-60);
       } else {
-        if (Number(minute) < 9) {
-          if ((Number(minute) + Number(times)) < 9) {
-            var time_6 = hour + ":" + 0 + minute + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times));
+        if ((Number(minute) + Number(times * 5)) < 9) {
+          if ((Number(minute) + Number(times * 6)) < 9) {
+            var time_6 = hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 6));
           } else {
-            var time_6 = hour + ":" + 0 + minute + " ~ " + hour + ":" + (Number(minute) + Number(times));
+            var time_6= hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 6));
           }
         } else {
-          if ((Number(minute) + Number(times)) < 9) {
-            var time_6 = hour + ":" + minute + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times));
+          if ((Number(minute) + Number(times *6)) < 9) {
+            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 6));
           } else {
-            var time_6 = hour + ":" + minute + " ~ " + hour + ":" + (Number(minute) + Number(times));
+            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 6));
           }
         }
         document.getElementById("time_6").innerHTML = time_6;
