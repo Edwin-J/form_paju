@@ -258,15 +258,15 @@
     if (Number(minute) + Number(times) >= 60) {
         if (Number(minute) < 9) {
           if ((Number(minute) + Number(times) - 60) < 9) {
-            var time_1 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
+            var time_6 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
           } else {
-            var time_1 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
+            var time_6 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
           }
         } else {
           if ((Number(minute) + Number(times) - 60) < 9) {
-            var time_1 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
+            var time_6 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
           } else {
-            var time_1 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
+            var time_6 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
           }
         }
         document.getElementById("time_6").innerHTML = time_6;
