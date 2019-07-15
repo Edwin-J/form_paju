@@ -19,6 +19,15 @@
   </p>
 
   <hr>
+    <h2>
+      <script language = "JavaScript">
+        var today = new Date();
+        var week = new Array("星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+        var day = week[today.getDay()];
+        document.write(today.getMonth()+1 , "月 ", today.getDate(), "日 ", day);
+      </script>
+    </h2>
+
     <table class="table1">
       <thead>
         <th>时间</th>
@@ -30,6 +39,7 @@
 
       </tbody>
     </table>
+  </hr>
 </html>
 
 <script type="text/javascript">
