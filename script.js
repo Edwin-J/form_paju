@@ -59,7 +59,7 @@ $(function(){
         html2canvas($("#captureDiv"), {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, 'image.png');
+                    saveAs(blob, 'image.jpeg');
                 });
             }
         });
