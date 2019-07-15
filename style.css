@@ -1,5 +1,16 @@
+p {
+  font-size: 40px;
+}
+
 h2 {
-  padding-left: 284px;
+  text-align: center;
+  font-size: 64px;
+}
+
+button {
+  width: 128px;
+  height: 64px;
+  font-size: 24px;
 }
 
 table.table1 {
@@ -11,18 +22,20 @@ table.table1 {
 }
 
 table.table1 th {
-    width: 155px;
     padding: 10px;
+    width: 155px;
     font-weight: bold;
     vertical-align: top;
+    align: center;
     color: #fff;
     background: #ac3939 ;
 }
 
 table.table1 td {
-    width: 155px;
     padding: 10px;
+    width: 155px;
     vertical-align: top;
+    align: center;
     border-bottom: 1px solid #ccc;
     background: #eee;
 }
@@ -33,5 +46,7 @@ input[type="Text"]{
 }
 
 input[type="number"] {
-  width: 30px;
+  width: 80px;
+  height: 50px;
+  font-size: 30px;
 }
