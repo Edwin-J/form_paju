@@ -1,295 +1,86 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title> 인도자용 전시대봉사 양식 </title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css"/>
-  </head>
+  <p>
+    시작 시간 :
+    <input type="number" id="start_time_hour" value = "17">시
+    <input type="number" id="start_time_minute" value = "00">분
 
-  <body>
+    <button onclick="del_row()" style="float: right;">행 삭제</button>
+    <button onclick="add_row()" style="float: right;">행 추가</button>
+  </p>
+  <p>
+    교대 간격 : <input type="number" id="time_change" value="15">분
+  </p>
 
-    <h2>
-      <script language = "JavaScript">
-      var today = new Date();
-      var week = new Array("星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
-      var day = week[today.getDay()];
-      document.write(today.getMonth()+1 , "月 ", today.getDate(), "日 ", day);
-      </script>
-    </h2>
-
+  <hr>
     <table class="table1">
       <thead>
-        <tr>
-          <th scope="cols"> 时间 </th>
-          <th scope="cols"> 任命一 </th>
-          <th scope="cols"> 任命二 </th>
-          <th scope="cols"> 任命三 </th>
-        </tr>
+        <th>时间</th>
+        <th>任命1</th>
+        <th>任命2</th>
+        <th>任命3</th>
       </thead>
-      <tbody>
-        <tr>
-          <td id="time_1"> 时间一 </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-        </tr>
-        <tr>
-          <td id="time_2"> 时间二 </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-        </tr>
-        <tr>
-          <td id="time_3"> 时间三 </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-        </tr>
-        <tr>
-          <td id="time_4"> 时间四 </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-        </tr><tr>
-          <td id="time_5"> 时间五 </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-        </tr> <tr>
-          <td id="time_6"> 时间六 </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-          <td> <input type="text"> </th>
-        </tr>
+      <tbody id="tbody">
 
       </tbody>
     </table>
-
-    <p>
-      시작 시간 :
-      <input type="number" id="start_time_hour" value = "17">시
-      <input type="number" id="start_time_minute" value = "0">분
-    </p>
-    <p> 교대 간격 : <input type="number" id="time_change" value="15">분 </p>
-    <button onclick="setText()"> 적용 </button>
-
-    <script>
-    function setText() {
-      var start_hour = document.getElementById("start_time_hour").value;
-      var start_minute = document.getElementById("start_time_minute").value;
-      var times = document.getElementById("time_change").value;
-
-      var hour = Number(start_hour);
-      var minute = Number(start_minute);
-
-      if (Number(minute) + Number(times) >= 60) {
-        if (Number(minute) < 9) {
-          if ((Number(minute) + Number(times) - 60) < 9) {
-            var time_1 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
-          } else {
-            var time_1 = hour + ":" + 0 + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
-          }
-        } else {
-          if ((Number(minute) + Number(times) - 60) < 9) {
-            var time_1 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times) - 60);
-          } else {
-            var time_1 = hour + ":" + minute + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times) - 60);
-          }
-        }
-        document.getElementById("time_1").innerHTML = time_1;
-        hour = Number(hour+1);
-        minute = Number(minute-60);
-      } else {
-        if (Number(minute) < 9) {
-          if ((Number(minute) + Number(times)) < 9) {
-            var time_1 = hour + ":" + 0 + minute + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times));
-          } else {
-            var time_1 = hour + ":" + 0 + minute + " ~ " + hour + ":" + (Number(minute) + Number(times));
-          }
-        } else {
-          if ((Number(minute) + Number(times)) < 9) {
-            var time_1 = hour + ":" + minute + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times));
-          } else {
-            var time_1 = hour + ":" + minute + " ~ " + hour + ":" + (Number(minute) + Number(times));
-          }
-        }
-        document.getElementById("time_1").innerHTML = time_1;
-      }
-
-
-      if (Number(minute) + Number(times * 2) >= 60) {
-        if ((Number(minute) + Number(times)) < 9) {
-          if ((Number(minute) + Number(times * 2) - 60) < 9) {
-            var time_2 = hour + ":" + 0 + (Number(minute) + Number(times)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 2) - 60);
-          } else {
-            var time_2 = hour + ":" + 0 + (Number(minute) + Number(times)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 2) - 60);
-          }
-        } else {
-          if ((Number(minute) + Number(times * 2) - 60) < 9) {
-            var time_2 = hour + ":" + (Number(minute) + Number(times)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 2) - 60);
-          } else {
-            var time_2 = hour + ":" + (Number(minute) + Number(times)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 2) - 60);
-          }
-        }
-        document.getElementById("time_2").innerHTML = time_2;
-        hour = Number(hour+1);
-        minute = Number(minute-60);
-      } else {
-        if ((Number(minute) + Number(times)) < 9) {
-          if ((Number(minute) + Number(times * 2)) < 9) {
-            var time_2 = hour + ":" + 0 + (Number(minute) + Number(times)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 2));
-          } else {
-            var time_2 = hour + ":" + 0 + (Number(minute) + Number(times)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 2));
-          }
-        } else {
-          if ((Number(minute) + Number(times * 2)) < 9) {
-            var time_2 = hour + ":" + (Number(minute) + Number(times)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 2));
-          } else {
-            var time_2 = hour + ":" + (Number(minute) + Number(times)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 2));
-          }
-        }
-        document.getElementById("time_2").innerHTML = time_2;
-      }
-
-
-      if (Number(minute) + Number(times * 3) >= 60) {
-        if ((Number(minute) + Number(times * 2)) < 9) {
-          if ((Number(minute) + Number(times * 3) - 60) < 9) {
-            var time_3 = hour + ":" + 0 + (Number(minute) + Number(times * 2)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 3) - 60);
-          } else {
-            var time_3 = hour + ":" + 0 + (Number(minute) + Number(times * 2)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 3) - 60);
-          }
-        } else {
-          if ((Number(minute) + Number(times * 3) - 60) < 9) {
-            var time_3 = hour + ":" + (Number(minute) + Number(times * 2)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 3) - 60);
-          } else {
-            var time_3 = hour + ":" + (Number(minute) + Number(times * 2)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 3) - 60);
-          }
-        }
-        document.getElementById("time_3").innerHTML = time_3;
-        hour = Number(hour+1);
-        minute = Number(minute-60);
-      } else {
-        if ((Number(minute) + Number(times * 2)) < 9) {
-          if ((Number(minute) + Number(times * 3)) < 9) {
-            var time_3 = hour + ":" + 0 + (Number(minute) + Number(times * 2)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 3));
-          } else {
-            var time_3 = hour + ":" + 0 + (Number(minute) + Number(times * 2)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 3));
-          }
-        } else {
-          if ((Number(minute) + Number(times * 3)) < 9) {
-            var time_3 = hour + ":" + (Number(minute) + Number(times * 2)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 3));
-          } else {
-            var time_3 = hour + ":" + (Number(minute) + Number(times * 2)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 3));
-          }
-        }
-        document.getElementById("time_3").innerHTML = time_3;
-      }
-
-
-      if (Number(minute) + Number(times * 4) >= 60) {
-        if ((Number(minute) + Number(times * 3)) < 9) {
-          if ((Number(minute) + Number(times * 4) - 60) < 9) {
-            var time_4 = hour + ":" + 0 + (Number(minute) + Number(times * 3)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 4) - 60);
-          } else {
-            var time_4 = hour + ":" + 0 + (Number(minute) + Number(times * 3)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 4) - 60);
-          }
-        } else {
-          if ((Number(minute) + Number(times * 4) - 60) < 9) {
-            var time_4 = hour + ":" + (Number(minute) + Number(times * 3)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 4) - 60);
-          } else {
-            var time_4 = hour + ":" + (Number(minute) + Number(times * 3)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 4) - 60);
-          }
-        }
-        document.getElementById("time_4").innerHTML = time_4;
-        hour = Number(hour+1);
-        minute = Number(minute-60);
-      } else {
-        if ((Number(minute) + Number(times * 3)) < 9) {
-          if ((Number(minute) + Number(times * 4)) < 9) {
-            var time_4 = hour + ":" + 0 + (Number(minute) + Number(times * 3)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 4));
-          } else {
-            var time_4 = hour + ":" + 0 + (Number(minute) + Number(times * 3)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 4));
-          }
-        } else {
-          if ((Number(minute) + Number(times *4)) < 9) {
-            var time_4 = hour + ":" + (Number(minute) + Number(times * 3)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 4));
-          } else {
-            var time_4 = hour + ":" + (Number(minute) + Number(times * 3)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 4));
-          }
-        }
-        document.getElementById("time_4").innerHTML = time_4;
-      }
-
-      if (Number(minute) + Number(times * 5) >= 60) {
-        if ((Number(minute) + Number(times * 4)) < 9) {
-          if ((Number(minute) + Number(times * 5) - 60) < 9) {
-            var time_5 = hour + ":" + 0 + (Number(minute) + Number(times * 4)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 5) - 60);
-          } else {
-            var time_5 = hour + ":" + 0 + (Number(minute) + Number(times * 4)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 5) - 60);
-          }
-        } else {
-          if ((Number(minute) + Number(times * 5) - 60) < 9) {
-            var time_5 = hour + ":" + (Number(minute) + Number(times * 4)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 5) - 60);
-          } else {
-            var time_5 = hour + ":" + (Number(minute) + Number(times * 4)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 5) - 60);
-          }
-        }
-        document.getElementById("time_5").innerHTML = time_5;
-        hour = Number(hour+1);
-        minute = Number(minute-60);
-      } else {
-        if ((Number(minute) + Number(times * 4)) < 9) {
-          if ((Number(minute) + Number(times * 5)) < 9) {
-            var time_5 = hour + ":" + 0 + (Number(minute) + Number(times * 4)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 5));
-          } else {
-            var time_5 = hour + ":" + 0 + (Number(minute) + Number(times * 4)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 5));
-          }
-        } else {
-          if ((Number(minute) + Number(times * 5)) < 9) {
-            var time_5 = hour + ":" + (Number(minute) + Number(times * 4)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 5));
-          } else {
-            var time_5 = hour + ":" + (Number(minute) + Number(times * 4)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 5));
-          }
-        }
-        document.getElementById("time_5").innerHTML = time_5;
-      }
-
-    if (Number(minute) + Number(times * 6) >= 60) {
-        if ((Number(minute) + Number(times * 5)) < 9) {
-          if ((Number(minute) + Number(times * 6) - 60) < 9) {
-            var time_6 = hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 6) - 60);
-          } else {
-            var time_6 = hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 6) - 60);
-          }
-        } else {
-          if ((Number(minute) + Number(times * 6) - 60) < 9) {
-            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + 0 + (Number(minute) + Number(times * 6) - 60);
-          } else {
-            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + Number(hour+1) + ":" + (Number(minute) + Number(times * 6) - 60);
-          }
-        }
-        document.getElementById("time_6").innerHTML = time_6;
-        hour = Number(hour+1);
-        minute = Number(minute-60);
-      } else {
-        if ((Number(minute) + Number(times * 5)) < 9) {
-          if ((Number(minute) + Number(times * 6)) < 9) {
-            var time_6 = hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 6));
-          } else {
-            var time_6= hour + ":" + 0 + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 6));
-          }
-        } else {
-          if ((Number(minute) + Number(times *6)) < 9) {
-            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + 0 + (Number(minute) + Number(times * 6));
-          } else {
-            var time_6 = hour + ":" + (Number(minute) + Number(times * 5)) + " ~ " + hour + ":" + (Number(minute) + Number(times * 6));
-          }
-        }
-        document.getElementById("time_6").innerHTML = time_6;
-      }
-
-    }
-    </script>
-  </body>
 </html>
+
+<script type="text/javascript">
+
+  function add_row() {
+
+    var tbody = document.getElementById('tbody');
+    var row = tbody.insertRow(tbody.rows.length);
+    if (tbody.rows.length > 8) {
+        return alert('더이상 행을 추가할 수 없습니다.');
+    }
+    var time = row.insertCell(0);
+    var per1 = row.insertCell(1);
+    var per2 = row.insertCell(2);
+    var per3 = row.insertCell(3);
+
+    var start_hour = document.getElementById("start_time_hour").value;
+    var start_minute = document.getElementById("start_time_minute").value;
+    var times = document.getElementById("time_change").value;
+    var hour = Number(start_hour);
+    var minute = Number(start_minute);
+
+    var table_start_time_hour = start_hour;
+    var table_start_time_minute = Number(start_minute + times * (tbody.rows.length - 1));
+    var table_finish_time_hour = table_start_time_hour;
+    var table_finish_time_minute = Number(start_minute + times * tbody.rows.length);
+
+    if (table_start_time_minute >= 60) { // minute이 60이상인 경우
+      table_start_time_minute = Number(table_start_time_minute) - 60;
+      table_start_time_hour = Number(table_start_time_hour) + 1;
+    }
+    if (table_finish_time_minute >= 60) {
+      table_finish_time_minute = Number(table_finish_time_minute) - 60;
+      table_finish_time_hour = Number(table_finish_time_hour) + 1;
+    }
+
+    if (table_start_time_minute == 0) // minute이 0인 경우
+      table_start_time_minute = "00";
+    if (table_finish_time_minute == 0)
+      table_finish_time_minute = "00"; // '00'으로 표기
+
+    if (table_finish_time_minute == 60) { // 예비용
+      table_finish_time_minute = "00";
+      table_finish_time_hour = Number(table_finish_time_hour) + 1;
+    }
+
+    var table_start_time = table_start_time_hour + ":" + table_start_time_minute;
+    var table_finish_time = table_finish_time_hour + ":" + table_finish_time_minute;
+    time.innerHTML = table_start_time + " ~ " + table_finish_time;
+    per1.innerHTML = "<input type=text>";
+    per2.innerHTML = "<input type=text>";
+    per3.innerHTML = "<input type=text>";
+  }
+
+  function del_row() {
+    var tbody = document.getElementById('tbody');
+    if (tbody.rows.length < 1) return;
+    tbody.deleteRow(tbody.rows.length-1);
+  }
+
+</script>
