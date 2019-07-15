@@ -18,31 +18,32 @@ table.table1 {
   border-spacing: 1px;
   text-align: center;
   line-height: 1.5;
-  margin: 20px 10px;
+  width: 100%;
 }
 
 table.table1 th {
     padding: 10px;
-    width: 155px;
     font-weight: bold;
+    font-size: 21px;
     vertical-align: top;
     align: center;
     color: #fff;
-    background: #ac3939 ;
+    background: #ac3939;
 }
 
 table.table1 td {
     padding: 10px;
-    width: 155px;
     vertical-align: top;
     align: center;
     border-bottom: 1px solid #ccc;
     background: #eee;
+    font-size: 24px;
 }
 
 input[type="Text"]{
-  width: 80px;
+  width: 128px;
   text-align: center;
+  font-size: 24px;
 }
 
 input[type="number"] {
