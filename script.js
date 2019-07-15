@@ -56,7 +56,7 @@ function del_row() {
 
 $(function(){
    $("#save").click(function() {
-        html2canvas($("#captureDiv"), {
+        html2canvas($("#captureTb"), {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
                     saveAs(blob, 'image.png');
