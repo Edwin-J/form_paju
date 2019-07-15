@@ -1,2 +1,7 @@
 # form_paju
-The form for leaders who leads preaching work that use mobile cart. (PAJU CHINESE Cong.)
+전시대 인도자를 위한 양식입니다.
+
+1. 좌측 상단에 봉사 시작 시간과 교대 간격을 입력합니다.
+2. 우측 상단의 '행 추가' 버튼을 클릭하면 타임 슬롯을 추가할 수 있습니다. (최대 8개)
+3. '행 삭제' 버튼을 클릭하면 타임 슬롯을 삭제할 수 있습니다.
+4. '캡쳐' 버튼을 클릭하면 해당 화면을 캡쳐한 후 다운로드 받을 수 있습니다.
