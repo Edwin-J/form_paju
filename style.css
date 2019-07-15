@@ -51,3 +51,7 @@ input[type="number"] {
   height: 50px;
   font-size: 30px;
 }
+
+div {
+  background-color: #fff
+}
