@@ -3,6 +3,11 @@
   <head>
     <title> 인도자용 전시대봉사 양식 </title>
     <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="FileSaver.js"></script>
+    <script src="html2canvas.js"></script>
+
+    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css"/>
   </head>
 
@@ -14,91 +19,35 @@
     <button onclick="del_row()" style="float: right;">행 삭제</button>
     <button onclick="add_row()" style="float: right;">행 추가</button>
   </p>
+
   <p>
     교대 간격 : <input type="number" id="time_change" value="15">분
+
+    <button id="save" style="float: right;">캡쳐</button>
   </p>
 
   <hr>
-    <h2>
-      <script language = "JavaScript">
-        var today = new Date();
-        var week = new Array("星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
-        var day = week[today.getDay()];
-        document.write(today.getMonth()+1 , "月 ", today.getDate(), "日 ", day);
-      </script>
-    </h2>
+    <div id="captureDiv">
+      <h2>
+        <script language = "JavaScript">
+          var today = new Date();
+          var week = new Array("星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+          var day = week[today.getDay()];
+          document.write(today.getMonth()+1 , "月 ", today.getDate(), "日 ", day);
+        </script>
+      </h2>
 
-    <table class="table1">
-      <thead>
-        <th>时间</th>
-        <th>任命1</th>
-        <th>任命2</th>
-        <th>任命3</th>
-      </thead>
-      <tbody id="tbody">
+      <table class="table1">
+        <thead id="thead">
+          <th>时间</th>
+          <th>任命1</th>
+          <th>任命2</th>
+          <th>任命3</th>
+        </thead>
+        <tbody id="tbody">
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </hr>
-</html>
-
-<script type="text/javascript">
-
-  function add_row() {
-
-    var tbody = document.getElementById('tbody');
-    var row = tbody.insertRow(tbody.rows.length);
-    if (tbody.rows.length > 8) {
-        return alert('더이상 행을 추가할 수 없습니다.');
-    }
-    var time = row.insertCell(0);
-    var per1 = row.insertCell(1);
-    var per2 = row.insertCell(2);
-    var per3 = row.insertCell(3);
-
-    var start_hour = document.getElementById("start_time_hour").value;
-    var start_minute = document.getElementById("start_time_minute").value;
-    var times = document.getElementById("time_change").value;
-    var hour = Number(start_hour);
-    var minute = Number(start_minute);
-
-    var table_start_time_hour = start_hour;
-    var table_start_time_minute = Number(start_minute + times * (tbody.rows.length - 1));
-    var table_finish_time_hour = table_start_time_hour;
-    var table_finish_time_minute = Number(start_minute + times * tbody.rows.length);
-
-    if (table_start_time_minute >= 60) { // minute이 60이상인 경우
-      table_start_time_minute = Number(table_start_time_minute) - 60;
-      table_start_time_hour = Number(table_start_time_hour) + 1;
-    }
-    if (table_finish_time_minute >= 60) {
-      table_finish_time_minute = Number(table_finish_time_minute) - 60;
-      table_finish_time_hour = Number(table_finish_time_hour) + 1;
-    }
-
-    if (table_start_time_minute == 0) // minute이 0인 경우
-      table_start_time_minute = "00";
-    if (table_finish_time_minute == 0)
-      table_finish_time_minute = "00"; // '00'으로 표기
-
-    if (table_finish_time_minute == 60) { // 예비용
-      table_finish_time_minute = "00";
-      table_finish_time_hour = Number(table_finish_time_hour) + 1;
-    }
-
-    var table_start_time = table_start_time_hour + ":" + table_start_time_minute;
-    var table_finish_time = table_finish_time_hour + ":" + table_finish_time_minute;
-    time.innerHTML = table_start_time + " ~ " + table_finish_time;
-    per1.innerHTML = "<input type=text>";
-    per2.innerHTML = "<input type=text>";
-    per3.innerHTML = "<input type=text>";
-  }
-
-  function del_row() {
-    var tbody = document.getElementById('tbody');
-    if (tbody.rows.length < 1) return;
-    tbody.deleteRow(tbody.rows.length-1);
-  }
-
-  </script>
 </html>
