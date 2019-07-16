@@ -2,9 +2,16 @@ p {
   font-size: 40px;
 }
 
+p.copyright {
+  font-size: 16px;
+  text-align: center;
+}
+
 h2 {
+  background-color: #ffffff;
   text-align: center;
   font-size: 48px;
+  margin-block-end: 15px;
 }
 
 button {
@@ -40,7 +47,7 @@ table.table1 td {
     font-size: 28px;
 }
 
-input[type="Text"]{
+input[type="text"] {
   width: 128px;
   text-align: center;
   font-size: 28px;
@@ -50,9 +57,4 @@ input[type="number"] {
   width: 80px;
   height: 50px;
   font-size: 30px;
-}
-
-div {
-  background-color: #ffffff
-  padding: 12px;
 }
