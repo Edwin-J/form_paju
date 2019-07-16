@@ -18,3 +18,5 @@
 -Internet Explorer
 
 -카카오톡 내장 브라우저
+
+-네이버 앱
