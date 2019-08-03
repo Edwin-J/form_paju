@@ -30,15 +30,19 @@ function add_row() {
     table_finish_time_hour = Number(table_finish_time_hour) + 1;
   }
 
-  if (table_finish_time_minute == 60) { // 예비용
-    table_finish_time_minute = "00";
-    table_finish_time_hour = Number(table_finish_time_hour) + 1;
-  }
-
   if (table_start_time_minute < 10) // minute이 10이하인 경우
     table_start_time_minute = "0" + table_start_time_minute;
   if (table_finish_time_minute < 10)
     table_finish_time_minute = "0" + table_finish_time_minute; // '0*'으로 표기
+
+  if (table_start_time_minute >= 60) { // 예비용
+    table_start_time_minute = Number(table_start_time_minute) - 60;
+    table_start_time_hour = Number(table_start_time_hour) + 1;
+  }
+  if (table_finish_time_minute >= 60) {
+    table_finish_time_minute = Number(table_finish_time_minute) - 60;
+    table_finish_time_hour = Number(table_finish_time_hour) + 1;
+  }
 
   var table_start_time = table_start_time_hour + ":" + table_start_time_minute;
   var table_finish_time = table_finish_time_hour + ":" + table_finish_time_minute;
