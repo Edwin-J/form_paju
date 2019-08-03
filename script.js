@@ -17,9 +17,9 @@ function add_row() {
   var minute = Number(start_minute);
 
   var table_start_time_hour = start_hour;
-  var table_start_time_minute = Number(start_minute + times * (tbody.rows.length - 1));
-  var table_finish_time_hour = table_start_time_hour;
-  var table_finish_time_minute = Number(start_minute + times * tbody.rows.length);
+  var table_start_time_minute = Number(start_minute) + Number(times) * Number(tbody.rows.length-1);
+  var table_finish_time_hour = start_hour;
+  var table_finish_time_minute = Number(start_minute) + Number(times) * Number(tbody.rows.length);
 
   if (table_start_time_minute >= 60) { // minute이 60이상인 경우
     table_start_time_minute = Number(table_start_time_minute) - 60;
@@ -30,15 +30,15 @@ function add_row() {
     table_finish_time_hour = Number(table_finish_time_hour) + 1;
   }
 
-  if (table_start_time_minute == 0) // minute이 0인 경우
-    table_start_time_minute = "00";
-  if (table_finish_time_minute == 0)
-    table_finish_time_minute = "00"; // '00'으로 표기
-
   if (table_finish_time_minute == 60) { // 예비용
     table_finish_time_minute = "00";
     table_finish_time_hour = Number(table_finish_time_hour) + 1;
   }
+
+  if (table_start_time_minute < 10) // minute이 10이하인 경우
+    table_start_time_minute = "0" + table_start_time_minute;
+  if (table_finish_time_minute < 10)
+    table_finish_time_minute = "0" + table_finish_time_minute; // '0*'으로 표기
 
   var table_start_time = table_start_time_hour + ":" + table_start_time_minute;
   var table_finish_time = table_finish_time_hour + ":" + table_finish_time_minute;
